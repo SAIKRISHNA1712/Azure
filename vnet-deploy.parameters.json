@@ -1,0 +1,24 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "VNET NAME": {
+            "value": "TEST-HUB-CORE-VNET"
+        },
+        "DMZ Subnet": {
+            "value": "SNET-EUS-INFRA-TEST-DMZ" 
+        },
+        "Mgmt Subnet": {
+            "value": "SNET-EUS-INFRA-TEST-MGMT" 
+        },
+        "VNet Address Space": {
+            "value": "10.159.55.0/22" 
+        },
+        "DMZ Subnet Address space": {
+            "value": "10.159.55.32/27" 
+        },
+        "Mgmt Subnet Address space": {
+            "value": "10.159.56.0/24" 
+        }
+    }
+}

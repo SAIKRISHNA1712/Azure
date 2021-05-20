@@ -1,0 +1,77 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "VNET NAME": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of HUB VNET"
+            }
+        },
+        "DMZ Subnet": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the DMZ Subnet"
+            }
+        },
+        "Mgmt Subnet": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of Mgmt Tools Subnet"
+            }
+        },
+        "VNet Address Space": {
+            "type": "string",
+            "metadata": {
+                "description": "VNET Address Space"
+            }
+        },
+        "DMZ Subnet Address space": {
+            "type": "string",
+            "metadata": {
+                "description": "DMZ Subnet Address space"
+            }
+        },
+            "Mgmt Subnet Address space": {
+            "type": "string",
+            "metadata": {
+                "description": "Mgmt Subnet Address space"
+            }
+        }
+    },
+     "functions": [],
+    "variables": {},
+    "resources": [
+        {
+            "name": "[parameters('VNET NAME')]",
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2019-11-01",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "displayName": "[parameters('VNET NAME')]"
+            },
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[parameters('VNet Address Space')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[parameters('DMZ Subnet')]",
+                        "properties": {
+                            "addressPrefix": "[parameters('DMZ Subnet Address space')]"
+                        }
+                    },
+                 {
+                        "name": "[parameters('Mgmt Subnet')]",
+                        "properties": {
+                            "addressPrefix": "[parameters('Mgmt Subnet Address space')]"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "outputs": {}
+}
